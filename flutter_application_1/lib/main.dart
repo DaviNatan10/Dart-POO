@@ -1,86 +1,115 @@
 import 'package:flutter/material.dart';
+
 void main() {
-  MaterialApp app = MaterialApp(
-    theme: ThemeData(
-      primarySwatch: Colors.red,
-      textTheme: const TextTheme(
-          bodyMedium: TextStyle(color: Color.fromARGB(255, 3, 3, 3))),
-    ),
-    home: Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Top 3 Clubes",
-          style: TextStyle(fontWeight: FontWeight.bold),
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Cervejas',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Cervejas'),
+        ),
+        body: SingleChildScrollView(
+          child: DataTable(
+            columns: const <DataColumn>[
+              DataColumn(
+                label: Text(
+                  'Nome',
+                  style: TextStyle(fontStyle: FontStyle.italic),
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  'Estilo',
+                  style: TextStyle(fontStyle: FontStyle.italic),
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  'IBU',
+                  style: TextStyle(fontStyle: FontStyle.italic),
+                ),
+              ),
+            ],
+            rows: const <DataRow>[
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text('La Fin Du Monde')),
+                  DataCell(Text('Bock')),
+                  DataCell(Text('65')),
+                ],
+              ),
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text('Sapporo Premium')),
+                  DataCell(Text('Sour Ale')),
+                  DataCell(Text('54')),
+                ],
+              ),
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text('Duvel')),
+                  DataCell(Text('Pilsner')),
+                  DataCell(Text('82')),
+                ],
+              ),
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text('IPA')),
+                  DataCell(Text('IPA')),
+                  DataCell(Text('70')),
+                ],
+              ),
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text('Stella Artois')),
+                  DataCell(Text('Pilsner')),
+                  DataCell(Text('30')),
+                ],
+              ),
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text('Guinness')),
+                  DataCell(Text('Stout')),
+                  DataCell(Text('45')),
+                ],
+              ),
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text('Heineken')),
+                  DataCell(Text('Pilsner')),
+                  DataCell(Text('22')),
+                ],
+              ),
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text('Paulaner')),
+                  DataCell(Text('Hefeweizen')),
+                  DataCell(Text('12')),
+                ],
+              ),
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text('Chimay Blue')),
+                  DataCell(Text('Belgian Strong Dark Ale')),
+                  DataCell(Text('75')),
+                ],
+              ),
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text('Red Stripe')),
+                  DataCell(Text('Lager')),
+                  DataCell(Text('20')),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Text(
-              "1° Barcelona",
-              style: TextStyle(
-                fontStyle: FontStyle.italic,
-                fontSize: 25,
-              ),
-            ),
-            Text(
-              "2° Real Madrid",
-              style: TextStyle(
-                fontStyle: FontStyle.italic,
-                fontSize: 25,
-              ),
-            ),
-            Text(
-              "3° Manchester City",
-              style: TextStyle(
-                fontStyle: FontStyle.italic,
-                fontSize: 25,
-              ),
-            ),
-            const SizedBox(height: 18),
-            Image.network(
-              'https://logosmarcas.net/wp-content/uploads/2020/04/Barcelona-Logo.png',
-                height: 150,
-                width: 150,
-
-              
-            ),
-            Image.network(
-              'https://logodetimes.com/wp-content/uploads/real-madrid.png',
-                height: 100,
-                width: 100,
-
-              
-            ),
-            Image.network(
-              'https://assets.b9.com.br/wp-content/uploads/2015/12/mcfc-new-crest0.png',
-                height: 100,
-                width: 100,
-
-              
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0, // define o item selecionado
-        
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.switch_account_rounded),
-            label: 'Perfil',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu),
-            label: 'Menu',
-          ),
-        ],
-      ),
-    ),
-  );
-  runApp(app);
+    );
+  }
 }
