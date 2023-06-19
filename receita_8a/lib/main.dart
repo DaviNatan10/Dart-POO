@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_hooks/flutter_hooks.dart';
-
 import 'package:http/http.dart' as http;
-
 import 'dart:convert';
 
 
-
 enum TableStatus{idle,loading,ready,error}
-
 enum ItemType{beer, coffee, nation, none}
 
 
@@ -18,26 +13,21 @@ class DataService{
 
   
 
-  final ValueNotifier<Map<String,dynamic>> tableStateNotifier 
-
-                            = ValueNotifier({
-
-                              'status':TableStatus.idle,
-
-                              'dataObjects':[],
-
-                              'itemType': ItemType.none
-
-                            });
+  final ValueNotifier<Map<String, dynamic>> tableStateNotifier = ValueNotifier({
+    'status': TableStatus.idle,
+    'dataObjects': [],
+    'itemType': ItemType.none
+  });
 
   
 
-  void carregar(index){
-
+  void carregar(index) {
     final funcoes = [carregarCafes, carregarCervejas, carregarNacoes];
-
+    tableStateNotifier.value = {
+      'status': TableStatus.loading,
+      'dataObjects': []
+    };
     funcoes[index]();
-
   }
 
 
@@ -50,17 +40,16 @@ class DataService{
 
     if (tableStateNotifier.value['itemType'] != ItemType.coffee){
 
+
+
       tableStateNotifier.value = {
-
         'status': TableStatus.loading,
-
         'dataObjects': [],
-
         'itemType': ItemType.coffee
-
       };
-
     }
+
+
 
 
 
@@ -84,7 +73,12 @@ class DataService{
 
       //se já houver cafés no estado da tabela...
 
-      if (tableStateNotifier.value['status'] != TableStatus.loading) coffeesJson = [...tableStateNotifier.value['dataObjects'], ...coffeesJson];
+      if (tableStateNotifier.value['status'] == TableStatus.loading) {
+        coffeesJson = [
+          ...tableStateNotifier.value['dataObjects'],
+          ...coffeesJson
+        ];
+      }
 
       
 
