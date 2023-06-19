@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import '../data/data_service.dart';
 
+class MenuQuantities {
+  static List<int> quantities = [3, 5, 7];
+}
+
 class MyApp extends StatelessWidget {
 
   @override
@@ -15,7 +19,7 @@ class MyApp extends StatelessWidget {
           title: const Text("Dicas"),
           actions: [
             PopupMenuButton(
-              itemBuilder: (_) => [3, 7, 15].map(
+              itemBuilder: (_) => MenuQuantities.quantities.map(
                 (num) => CheckedPopupMenuItem(
                   value: num,
                   checked: dataService.numberOfItems == num, // Verifica se é o valor selecionado
