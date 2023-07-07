@@ -73,13 +73,13 @@ class NewNavBar extends HookWidget {
       currentIndex: state.value,
       items: const [
         BottomNavigationBarItem(
-          label: "Cafés",
-          icon: Icon(Icons.coffee_outlined),
+          label: "Banco",
+          icon: Icon(Icons.account_balance),
         ),
         BottomNavigationBarItem(
-            label: "Cervejas", icon: Icon(Icons.local_drink_outlined)),
+            label: "Cidade", icon: Icon(Icons.location_city)),
         BottomNavigationBarItem(
-          label: "Nações", icon: Icon(Icons.flag_outlined))
+          label: "Empresa", icon: Icon(Icons.work_outline))
       ]);
   }
 }

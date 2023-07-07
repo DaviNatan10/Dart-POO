@@ -9,23 +9,23 @@ enum TableStatus{idle,loading,ready,error}
 
 enum ItemType{
 
-  beer, coffee, nation, none;
+   company , address, bank, none;
 
   String get asString => '$name';
 
-  List<String> get columns => this == coffee? ["Nome", "Origem", "Tipo"] :
+  List<String> get columns => this == company? ["Numero Telefone", "Industria", "Endereço"] :
 
-                              this == beer? ["Nome", "Estilo", "IBU"]:
+                              this == address? ["Cidade", "Rua", "Caixa Correios"]:
 
-                              this == nation? ["Nome", "Capital", "Idioma","Esporte"]:
+                              this == bank? ["Numero Conta", "Nome do  Banco", "numero de roteamento"]:
 
                               [] ;
 
-  List<String> get properties => this == coffee? ["blend_name","origin","variety"] :
+  List<String> get properties => this == company? ["phone_number","industry","full_address"] :
 
-                              this == beer? ["name","style","ibu"]:
+                              this == address? ["city","street_name","mail_box"]:
 
-                              this == nation? ["nationality","capital","language","national_sport"]:
+                              this == bank? ["account_number","bank_name","routing_number"]:
 
                               [] ;
 
@@ -63,7 +63,7 @@ class DataService{
   
 
   void carregar(index){
-    final params = [ItemType.coffee, ItemType.beer, ItemType.nation];
+    final params = [ItemType.bank, ItemType.address, ItemType.company];
     carregarPorTipo(params[index]);
   }
 
